@@ -4,6 +4,14 @@
   "description": "Focus code review on complexity changes after each coding task.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjw99830/dsh-plugin-noema.git"
+  },
+  "homepage": "https://github.com/wjw99830/dsh-plugin-noema#readme",
+  "bugs": {
+    "url": "https://github.com/wjw99830/dsh-plugin-noema/issues"
+  },
   "packageManager": "pnpm@11.7.0",
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
