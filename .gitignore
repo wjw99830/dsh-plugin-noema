@@ -1,0 +1,11 @@
+node_modules/
+lib/
+coverage/
+*.tgz
+*.tsbuildinfo
+.DS_Store
+.env
+.env.*
+!.env.example
+.artifacts/
+.docs/

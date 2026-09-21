@@ -1,0 +1,329 @@
+.noema-card {
+  --noema-header-bg: var(--dsw-static-neutral-50, #f9f9f9);
+  --noema-accent: var(--dsw-alias-state-business-primary, #4d6bfe);
+  --noema-up: var(--dsw-alias-state-warn-label, #a96908);
+  --noema-down: color-mix(
+    in srgb,
+    var(--dsw-alias-state-success-primary, #209766) 70%,
+    var(--dsw-alias-label-primary, #222)
+  );
+  --noema-border: var(--dsw-alias-border-l1, #e2e5ec);
+  --noema-muted: var(--dsw-alias-label-secondary, #697386);
+  border: 1px solid var(--noema-border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 8px 0;
+  color: var(--dsw-alias-label-primary, #222);
+  background: var(--dsw-alias-bg-layer-1, #fff);
+  font-size: 13px;
+  line-height: 1.5;
+}
+body[data-ds-dark-theme] .noema-card {
+  --noema-header-bg: var(--dsw-static-neutral-850, #262626);
+}
+.noema-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dsw-alias-label-primary, #222);
+  font-size: 12px;
+  font-weight: 600;
+}
+.noema-mark {
+  color: var(--noema-accent);
+  display: block;
+  flex: 0 0 16px;
+}
+.noema-card .noema-file-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  min-width: 0;
+  justify-content: flex-start;
+  text-align: start;
+  font-size: 12px;
+  font-weight: 600;
+  color: inherit;
+}
+.noema-file-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.noema-issue {
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.noema-warning {
+  color: var(--dsw-alias-state-warn-label, #a96908);
+}
+.noema-danger {
+  color: var(--dsw-alias-state-error-primary, #d93026);
+}
+.noema-file-path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.noema-file-chevron,
+.noema-function-chevron {
+  flex: 0 0 16px;
+  color: var(--noema-muted);
+}
+.noema-file-title[aria-expanded='true'] .noema-file-chevron,
+.noema-function-label[aria-expanded='true'] .noema-function-chevron {
+  transform: rotate(90deg);
+}
+.noema-card svg {
+  display: block;
+  flex-shrink: 0;
+}
+.noema-table-scroll {
+  overflow-x: auto;
+}
+.noema-table {
+  width: 100%;
+  min-width: 540px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-variant-numeric: tabular-nums;
+}
+.noema-table th,
+.noema-table td {
+  padding: 5px 6px;
+  text-align: center;
+  white-space: nowrap;
+  border: 0;
+  vertical-align: middle;
+}
+.noema-table thead {
+  background: var(--noema-header-bg);
+}
+.noema-table thead th {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--noema-muted);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.noema-name-column {
+  width: 31%;
+}
+.noema-table th:first-child {
+  text-align: start;
+  padding-inline-start: 14px;
+}
+.noema-table th:last-child,
+.noema-table td:last-child {
+  padding-inline-end: 14px;
+}
+.noema-table tbody tr {
+  border-top: 1px solid color-mix(in srgb, var(--noema-border) 65%, transparent);
+}
+.noema-expandable-row {
+  cursor: pointer;
+}
+.noema-table tbody .noema-expandable-row:hover {
+  background: color-mix(in srgb, var(--noema-accent) 4%, transparent);
+}
+.noema-function {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  font-weight: 500;
+}
+.noema-card .noema-function-name {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: start;
+}
+.noema-card .noema-top-level {
+  color: var(--noema-muted);
+}
+.noema-toggle-space {
+  width: 16px;
+  flex: 0 0 16px;
+}
+.noema-card button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.noema-card .noema-function-label {
+  min-width: 0;
+  padding: 0;
+  gap: 5px;
+  color: inherit;
+  justify-content: flex-start;
+}
+.noema-card button:focus-visible {
+  outline: 2px solid var(--noema-accent);
+  outline-offset: -2px;
+}
+.noema-metric {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.noema-values {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.noema-values strong {
+  font-weight: 600;
+}
+.noema-before,
+.noema-arrow {
+  color: var(--noema-muted);
+  font-size: 11px;
+}
+.noema-arrow {
+  opacity: 0.65;
+}
+.noema-delta {
+  display: inline-block;
+  margin-inline-start: 6px;
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+.noema-up .noema-delta {
+  color: var(--noema-up);
+}
+.noema-down .noema-delta {
+  color: var(--noema-down);
+}
+.noema-recursion {
+  color: var(--noema-accent);
+}
+.noema-same {
+  color: var(--noema-muted);
+}
+.noema-status {
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 18px;
+  border-radius: 4px;
+  padding: 0 4px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+.noema-status-added {
+  color: var(--noema-accent);
+}
+.noema-status-removed,
+.noema-status-unavailable {
+  color: var(--noema-muted);
+}
+.noema-recursion {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.noema-settings {
+  color: var(--dsw-alias-label-primary, #222);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 20px 0;
+}
+.noema-settings h3 {
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+.noema-settings-hint {
+  color: var(--dsw-alias-label-secondary, #697386);
+  font-size: 13px;
+  margin: 6px 0 12px;
+}
+.noema-settings fieldset {
+  border: 0;
+  padding: 0;
+  margin: 20px 0 0;
+  min-width: 0;
+}
+.noema-settings label {
+  display: block;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.noema-settings textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  resize: vertical;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: 1px solid var(--dsw-alias-border-l1, #e2e5ec);
+  border-radius: 8px;
+  color: inherit;
+  background: var(--dsw-alias-bg-layer-1, #fff);
+  font:
+    13px/1.7 ui-monospace,
+    monospace;
+}
+.noema-settings button {
+  cursor: pointer;
+  padding: 7px 12px;
+  font: inherit;
+  color: inherit;
+  border: 1px solid var(--dsw-alias-border-l1, #e2e5ec);
+  border-radius: 7px;
+  background: var(--dsw-alias-bg-layer-1, #fff);
+}
+.noema-settings button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.noema-settings textarea:focus-visible,
+.noema-settings button:focus-visible {
+  outline: 2px solid var(--dsw-alias-state-business-primary, #4d6bfe);
+  outline-offset: 2px;
+}
+.noema-settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.noema-settings .noema-settings-save {
+  background: var(--dsw-alias-state-business-primary, #4d6bfe);
+  color: white;
+  border-color: transparent;
+}
+.noema-settings-warning {
+  color: var(--dsw-alias-state-warn-label, #a96908);
+  font-size: 13px;
+}
+
+.noema-card .noema-reveal {
+  display: block;
+  width: 100%;
+  padding-block: 6px;
+  border: 0;
+  background: transparent;
+  color: var(--noema-muted);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.noema-card .noema-reveal:hover {
+  color: var(--noema-accent);
+}
