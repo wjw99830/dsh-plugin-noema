@@ -21,7 +21,7 @@ pnpm test
 
 ```sh
 pnpm dsh plugin --profile web add ../dsh-plugin-noema
-pnpm dsh --profile web
+pnpm dsh web
 ```
 
 修改 Noema 后，在插件目录运行 `pnpm build`，重启 DSH 并刷新浏览器
@@ -38,7 +38,7 @@ pnpm dsh --profile web
 | `pnpm clean` | 删除 `lib/` 中的生成文件 |
 | `pnpm build` | 清理 `lib/`，编译 Host 与 Client、复制解析资源并打包 Web 入口 |
 | `pnpm typecheck` | Host 与 Client 类型检查 |
-| `pnpm test` | 构建、计分、快照、比较、存储、Remote API、Worker 生命周期和 Client 行为测试 |
+| `pnpm test` | 构建、计分、快照、比较、存储、Profile 配置、Remote API、Worker 生命周期和 Client 行为测试 |
 | `pnpm test:scoring` | 使用真实 WASM 运行计分规范用例，核对明确预期与规则依据 |
 | `pnpm test:package` | 打包并在独立目录安装生产依赖，检查全部解析模式和 Host 激活 |
 | `pnpm benchmark:analyzer` | 不同场景下的分析器冷热运行耗时、原始采样和资源大小 |
@@ -71,10 +71,10 @@ pnpm benchmark:analyzer --case tsx-structured --runs 3 --warmup 5 --samples 20
 
 ```sh
 pnpm pack
-dsh plugin --profile web add ./dsh-plugin-noema-0.1.0-alpha.0.tgz
+dsh plugin --profile web add ./dsh-plugin-noema-0.1.0-alpha.1.tgz
 ```
 
-`pnpm pack` 通过 `prepare` 执行构建，将发布压缩包写入仓库根目录。每次构建都会重新生成 `lib/` 中的编译代码和解析资源。包内包含编译后的 Host 与 Client、类型声明、WASM 语法与许可证、DSH bundle patch 和公开文档，内容由 `package.json` 的 `files` 列表控制
+`pnpm pack` 通过 `prepare` 执行构建，将发布压缩包写入仓库根目录。每次构建都会重新生成 `lib/` 中的编译代码和解析资源。包内包含编译后的 Host 与 Client、类型声明、WASM 语法与许可证、DSH bundle patch、插件展示元数据和公开文档，内容由 `package.json` 的 `files` 列表控制
 
 ## 提交修改
 

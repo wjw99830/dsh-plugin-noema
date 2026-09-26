@@ -1,5 +1,5 @@
 import type { FileSystem } from '@deepseek-ai/dsh-fs';
-import type { Config } from './config.ts';
+import type { AnalysisConfig } from './config.ts';
 import { captureSnapshot } from './snapshot.ts';
 import type { Snapshot } from './snapshot.ts';
 import type { Report } from './report.ts';
@@ -10,7 +10,7 @@ interface TurnCapture {
   turn: number;
   start_seq: number;
   before?: Snapshot;
-  config: Config;
+  config: AnalysisConfig;
 }
 
 export class TurnRecorder {
@@ -23,7 +23,7 @@ export class TurnRecorder {
     private readonly fs: FileSystem,
     private readonly cwd: string,
     private readonly sessionId: string,
-    private readonly getConfig: () => Config,
+    private readonly getConfig: () => AnalysisConfig,
     private readonly signal: AbortSignal,
     private readonly queue: AnalysisQueue,
     private readonly save: (report: Report) => Promise<void>,

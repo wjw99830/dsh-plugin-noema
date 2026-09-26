@@ -24,6 +24,10 @@ test(
     t.after(() => controller.abort())
     const watch = ctx.noema.watch(session.id, controller.signal)
     assert.deepEqual((await watch.next()).value, [])
+    const events = []
+    ctx.on('session/event', (current, event) => {
+      if (current === session) events.push(event)
+    })
     const original = 'function f(x:boolean){if(x)return 1;return 0}'
     const second = 'function f(x:boolean){if(x){if(y)return 2};return 0}'
     await writeFile(`${cwd}/a.ts`, original)
@@ -46,7 +50,7 @@ test(
     assert.equal(last.files[0].after.analysis.scopes[0].metrics.cyclomatic, 1)
     assert.equal(await ctx.noema.get('other-session', first.report_id), undefined)
     assert.equal(
-      session.snapshotEvents().some((e) => e.type.startsWith('noema')),
+      events.some((e) => e.type.startsWith('noema')),
       false,
     )
     controller.abort()

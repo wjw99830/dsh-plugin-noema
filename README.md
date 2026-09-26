@@ -32,7 +32,7 @@ No card appears when there are no supported code changes, including edits limite
 
 ## Install
 
-Requires an installed DSH CLI and Node.js `^22.19.0 || >=24.0.0`. The tested DSH version is `0.1.6-alpha.2`
+Requires DSH `0.1.7-rc.2` or later in the `0.1.x` series and Node.js `^22.19.0 || >=24.0.0`. Tested with DSH `0.1.7-rc.2`
 
 Install the npm package into the Web profile, then start DSH:
 
@@ -45,7 +45,7 @@ If DSH is already running, restart it and refresh the browser. Noema starts anal
 
 ## Choose files
 
-Open **Plugins → plugin-noema → Files to analyze** in the Web sidebar. Set include and exclude patterns relative to your workspace, such as `src/**` and `**/*.test.ts`, or use **Add common test exclusions**. Exclusions take precedence, and saved changes apply from the next turn
+Open **Plugins → Noema → Files to analyze** in the Web sidebar. Set include and exclude patterns relative to your workspace, such as `src/**` and `**/*.test.ts`, or use **Add common test exclusions**. Settings apply to the current Profile. Exclusions take precedence, and saved changes apply from the next turn
 
 Noema respects `.gitignore` and excludes common dependency and build directories by default
 

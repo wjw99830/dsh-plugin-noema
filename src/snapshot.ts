@@ -3,7 +3,7 @@ import ignore from 'ignore';
 import picomatch from 'picomatch';
 import type { FileSystem, FsTarget } from '@deepseek-ai/dsh-fs';
 import { languageForPath } from './languages.ts';
-import type { Config } from './config.ts';
+import type { AnalysisConfig } from './config.ts';
 import type { FailureReason } from './analyzer/types.ts';
 
 export type CapturedFile =
@@ -19,7 +19,7 @@ export interface Snapshot {
 export async function captureSnapshot(
   fs: FileSystem,
   cwd: string,
-  config: Config,
+  config: AnalysisConfig,
   lifetime: AbortSignal,
   rules?: Record<string, string>,
 ): Promise<Snapshot> {

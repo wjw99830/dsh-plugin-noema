@@ -21,7 +21,7 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
     noema: NoemaKey;
   }
 }
-export const inject = ['slots', 'locale', 'remote', 'settingsScope'];
+export const inject = ['slots', 'locale', 'remote', 'configForms'];
 
 export async function apply(ctx: Context): Promise<void> {
   const disposeRemote = await ctx.remote.$mount(REMOTE);
@@ -40,7 +40,7 @@ export async function apply(ctx: Context): Promise<void> {
       document.head.append(style);
       return () => style.remove();
     });
-    const scope = ctx.settingsScope.bind<FilePatterns>({ namespace: 'noema' });
+    const scope = ctx.configForms.get<FilePatterns>('noema');
     ctx.slots.inject('plugins.bundle.config', () =>
       ctx.slots.register(
         {

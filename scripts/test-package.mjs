@@ -17,11 +17,15 @@ await writeFile(
       type: 'module',
       dependencies: {
         'dsh-plugin-noema': `file:${tarball}`,
-        '@deepseek-ai/cordis': '4.0.2',
-        '@deepseek-ai/dsh-fs-local': '0.1.6-alpha.2',
-        '@deepseek-ai/dsh-storage': '0.1.6-alpha.2',
-        '@deepseek-ai/dsh-storage-json': '0.1.6-alpha.2',
-        '@deepseek-ai/dsh-settings-file': '0.1.6-alpha.2',
+        ...Object.fromEntries(
+          [
+            '@deepseek-ai/cordis',
+            '@deepseek-ai/dsh-fs-local',
+            '@deepseek-ai/dsh-storage',
+            '@deepseek-ai/dsh-storage-json',
+            ...Object.keys(metadata.peerDependencies).filter((name) => name.startsWith('@deepseek-ai/dsh-')),
+          ].map((name) => [name, metadata.devDependencies[name]]),
+        ),
       },
     },
     null,
@@ -76,7 +80,6 @@ const {default:Storage}=await import('@deepseek-ai/dsh-storage')
 const JsonStorage=await import('@deepseek-ai/dsh-storage-json')
 const DomainStorage=await import('@deepseek-ai/dsh-storage-domain')
 const {default:Typert}=await import('@deepseek-ai/dsh-typert-registry')
-const {default:SettingsFile}=await import('@deepseek-ai/dsh-settings-file')
 const ctx = new Context()
 try {
  await ctx.plugin(LocalFs,{cwd:ownDirectory})
@@ -84,7 +87,6 @@ try {
  await ctx.plugin(JsonStorage,{root:ownDirectory+'/storage'})
  await ctx.plugin(DomainStorage,{backend:'json'})
  await ctx.plugin(Typert)
- await ctx.plugin(SettingsFile,{path:ownDirectory+'/settings.yaml',watch:false})
  const fiber=await ctx.plugin(plugin,{})
  assert.ok(ctx.noema)
  assert.deepEqual(await ctx.noema.list('empty'),[])

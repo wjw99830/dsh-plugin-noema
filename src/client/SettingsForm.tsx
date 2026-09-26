@@ -1,12 +1,12 @@
 import { useCallback, useId, useState, useSyncExternalStore } from 'react';
-import type { SettingsScope } from '@deepseek-ai/dsh-client-ui-settings/client';
+import type { ConfigForm } from '@deepseek-ai/dsh-client-ui-settings/client';
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots';
 import type {} from '@deepseek-ai/dsh-client-ui-plugin-manager/client';
 import { FilePatterns } from '../config.ts';
 import { patternLines, savePatterns, testPatterns } from './settings.ts';
 
 export interface SettingsInjected {
-  scope: SettingsScope<FilePatterns>;
+  scope: ConfigForm<FilePatterns>;
 }
 type SettingsProps = PropsRuntime<'plugins.bundle.config'> & PropsLocale<'noema'> & InjectFace<SettingsInjected>;
 interface Draft {

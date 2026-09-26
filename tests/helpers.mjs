@@ -7,10 +7,9 @@ import Storage from "@deepseek-ai/dsh-storage";
 import * as JsonStorage from "@deepseek-ai/dsh-storage-json";
 import * as DomainStorage from "@deepseek-ai/dsh-storage-domain";
 import Typert from "@deepseek-ai/dsh-typert-registry";
-import SettingsFile from "@deepseek-ai/dsh-settings-file";
-import { Config } from "../lib/config.js";
+import { Config, FilePatterns } from "../lib/config.js";
 
-export const config = Config({});
+export const config = { ...Config({}), ...FilePatterns({}) };
 export function snapshot(files) {
   return {
     files: Object.fromEntries(
@@ -52,9 +51,5 @@ export async function workspace(t, root) {
   await ctx.plugin(JsonStorage, { root: resolve(directory, "storage") });
   await ctx.plugin(DomainStorage, { backend: "json" });
   await ctx.plugin(Typert);
-  await ctx.plugin(SettingsFile, {
-    path: resolve(directory, "settings.yaml"),
-    watch: false,
-  });
   return { ctx, cwd, directory };
 }

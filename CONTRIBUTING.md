@@ -21,7 +21,7 @@ To use a sibling DSH source checkout, run these commands from that checkout:
 
 ```sh
 pnpm dsh plugin --profile web add ../dsh-plugin-noema
-pnpm dsh --profile web
+pnpm dsh web
 ```
 
 After editing Noema, run `pnpm build` in the plugin directory, restart DSH, and refresh the browser
@@ -38,7 +38,7 @@ Prefer DSH official UI components and existing UI features, following their usag
 | `pnpm clean` | Remove generated files in `lib/` |
 | `pnpm build` | Clean `lib/`, compile Host and Client, copy parser resources, and bundle the Web entry |
 | `pnpm typecheck` | Host and Client type checking |
-| `pnpm test` | Build, scoring, snapshots, comparison, storage, Remote API, Worker lifecycle, and Client behavior tests |
+| `pnpm test` | Build, scoring, snapshots, comparison, storage, Profile configuration, Remote API, Worker lifecycle, and Client behavior tests |
 | `pnpm test:scoring` | Real-WASM scoring conformance cases with explicit expectations and rule sources |
 | `pnpm test:package` | Pack and install production dependencies in a separate directory, then verify all parser modes and Host activation |
 | `pnpm benchmark:analyzer` | Analyzer cold and warm timings across workloads, raw samples, and resource sizes |
@@ -71,10 +71,10 @@ Memory snapshots and WASM sizes provide resource context. Memory snapshots inclu
 
 ```sh
 pnpm pack
-dsh plugin --profile web add ./dsh-plugin-noema-0.1.0-alpha.0.tgz
+dsh plugin --profile web add ./dsh-plugin-noema-0.1.0-alpha.1.tgz
 ```
 
-`pnpm pack` runs the build through `prepare` and writes the release tarball to the repository root. Each build replaces `lib/` with compiled code and parser resources. The package contains the compiled Host and Client, type declarations, WASM grammars and licenses, the DSH bundle patch, and public documentation. The `files` list in `package.json` controls publication
+`pnpm pack` runs the build through `prepare` and writes the release tarball to the repository root. Each build replaces `lib/` with compiled code and parser resources. The package contains the compiled Host and Client, type declarations, WASM grammars and licenses, the DSH bundle patch, plugin display metadata, and public documentation. The `files` list in `package.json` controls publication
 
 ## Submitting changes
 

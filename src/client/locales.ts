@@ -2,7 +2,7 @@ export const en = {
   settings_summary: 'Choose which files Noema analyzes',
   settings_title: 'Files to analyze',
   settings_intro:
-    'Applies to all workspaces. Saved changes take effect from the next task; existing reports stay the same.',
+    'Applies to all workspaces in this Profile. Saved changes take effect from the next task; existing reports stay the same.',
   include_label: 'Include files',
   include_help: 'One pattern per line. **/* includes all supported code files; src/** includes only the src folder.',
   include_empty: 'No files will be analyzed while this list is empty.',
@@ -51,7 +51,7 @@ export const en = {
 export const zh: Record<keyof typeof en, string> = {
   settings_summary: '选择 Noema 分析哪些文件',
   settings_title: '分析范围',
-  settings_intro: '对所有工作区生效。保存后的规则从下一轮任务开始使用，已有报告保持不变',
+  settings_intro: '对当前 Profile 中的所有工作区生效。保存后的规则从下一轮任务开始使用，已有报告保持不变',
   include_label: '包含文件',
   include_help: '每行一个模式。**/* 包含所有支持的代码文件，src/** 只包含 src 目录',
   include_empty: '当前列表为空，Noema 将不分析任何文件',

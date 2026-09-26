@@ -2,7 +2,6 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { writeFile, mkdir, symlink } from 'node:fs/promises'
 import { captureSnapshot } from '../lib/snapshot.js'
-import { Config } from '../lib/config.js'
 import { workspace, config } from './helpers.mjs'
 
 test('captures supported extensions with frozen nested ignore files and skips links', async (t) => {
@@ -67,7 +66,8 @@ test('filters file globs before reading sources while retaining nested includes 
     await writeFile(`${cwd}/${path}`, 'code')
   }
   await writeFile(`${cwd}/.gitignore`, 'src/ignored.py\n')
-  const options = Config({
+  const options = {
+    ...config,
     include: ['root.ts', 'src/**/*.{ts,tsx,py,go,js}'],
     exclude: [
       ...config.exclude,
@@ -77,7 +77,7 @@ test('filters file globs before reading sources while retaining nested includes 
       '**/*_test.go',
     ],
     max_files: 4,
-  })
+  }
   const snapshot = await captureSnapshot(ctx.fs, cwd, options, new AbortController().signal)
   assert.deepEqual(Object.keys(snapshot.files).sort(), [
     'root.ts',

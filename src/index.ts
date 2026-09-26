@@ -5,7 +5,7 @@ import type {} from '@deepseek-ai/dsh-fs';
 import type {} from '@deepseek-ai/dsh-typert-registry';
 import { TYPERT } from './rpc.ts';
 import type { Session } from '@deepseek-ai/dsh-session';
-import { Config, FilePatterns } from './config.ts';
+import { Config } from './config.ts';
 import type {} from '@deepseek-ai/dsh-settings';
 import { AnalysisQueue } from './analyzer/queue.ts';
 import { TurnRecorder } from './recorder.ts';
@@ -20,7 +20,7 @@ export type { ReportIndex } from './report.ts';
 export { NoemaReports } from './store.ts';
 
 export const name = 'dsh-plugin-noema';
-export const inject = ['fs', 'storageDomain', 'typert', 'settings'];
+export const inject = ['fs', 'storageDomain', 'typert'];
 
 declare module '@deepseek-ai/cordis' {
   interface Context {
@@ -30,8 +30,9 @@ declare module '@deepseek-ai/cordis' {
 
 export async function apply(ctx: Context, config: Config): Promise<void> {
   diagnose('plugin.initializing');
-  const patterns = ctx.settings.register('noema', FilePatterns, {
-    base: { include: config.include, exclude: config.exclude },
+  const owner = ctx.fiber;
+  ctx.inject(['settings'], (ctx) => {
+    ctx.effect(() => ctx.settings.configure({ auto: false }, owner));
   });
   const lifetime = new AbortController();
   const queue = new AnalysisQueue(config.max_pending_reports, config.analysis_timeout_ms);
@@ -73,7 +74,7 @@ export async function apply(ctx: Context, config: Config): Promise<void> {
           ctx.fs,
           cwd,
           session.id,
-          () => ({ ...config, ...patterns.get() }),
+          () => ({ ...config, include: [...config.include.get()], exclude: [...config.exclude.get()] }),
           lifetime.signal,
           queue,
           (report) => reports.save(report),

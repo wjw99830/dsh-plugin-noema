@@ -5,14 +5,16 @@ export interface FilePatterns {
   exclude: string[];
 }
 
-export const FilePatterns: s<FilePatterns> = s.object({
+const patterns = {
   include: s.array(s.string()).default(['**/*']),
   exclude: s
     .array(s.string())
     .default(['**/{.git,node_modules,.artifacts,dist,build,coverage,.venv,__pycache__,.next}/**']),
-});
+};
 
-export interface Config extends FilePatterns {
+export const FilePatterns: s<FilePatterns> = s.object(patterns);
+
+export interface AnalysisConfig extends FilePatterns {
   max_file_bytes: number;
   max_snapshot_bytes: number;
   max_files: number;
@@ -21,7 +23,7 @@ export interface Config extends FilePatterns {
   max_pending_reports: number;
 }
 
-export const Config: s<Config> = s.object({
+export const Config = s.object({
   max_file_bytes: s
     .number()
     .step(1)
@@ -36,6 +38,8 @@ export const Config: s<Config> = s.object({
   snapshot_timeout_ms: s.number().step(1).min(1).max(2_147_483_647).default(10_000),
   analysis_timeout_ms: s.number().step(1).min(1).max(2_147_483_647).default(15_000),
   max_pending_reports: s.number().step(1).min(1).max(Number.MAX_SAFE_INTEGER).default(3),
-  include: FilePatterns.dict!.include!,
-  exclude: FilePatterns.dict!.exclude!,
+  include: patterns.include.volatile(),
+  exclude: patterns.exclude.volatile(),
 });
+
+export type Config = ReturnType<typeof Config>;
