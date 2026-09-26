@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-noema",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.7-rc.2",
   "description": "Focus code review on complexity changes after each coding task.",
   "type": "module",
   "license": "MIT",
