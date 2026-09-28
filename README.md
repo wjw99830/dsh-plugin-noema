@@ -1,5 +1,7 @@
 # Noema
 
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/wjw99830/dsh-plugin-noema)
+
 English | [中文](README.zh.md)
 
 Keep your standards in AI-assisted development

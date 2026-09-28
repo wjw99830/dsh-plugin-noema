@@ -1,5 +1,7 @@
 # Noema
 
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/wjw99830/dsh-plugin-noema)
+
 [English](README.md) | 中文
 
 在 AI 编程中保持自己的代码品味
