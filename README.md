@@ -34,7 +34,7 @@ No card appears when there are no supported code changes, including edits limite
 
 ## Install
 
-Requires DSH `0.1.7-rc.2` or later in the `0.1.x` series and Node.js `^22.19.0 || >=24.0.0`. Tested with DSH `0.1.7-rc.2`
+Supports DSH `^0.1.7-rc.2 || ^0.2.0-rc.2` and requires Node.js `^22.19.0 || >=24.0.0`
 
 Install the npm package into the Web profile, then start DSH:
 

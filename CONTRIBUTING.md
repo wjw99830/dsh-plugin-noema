@@ -71,7 +71,7 @@ Memory snapshots and WASM sizes provide resource context. Memory snapshots inclu
 
 ```sh
 pnpm pack
-dsh plugin --profile web add ./dsh-plugin-noema-0.1.0-alpha.1.tgz
+dsh plugin --profile web add ./dsh-plugin-noema-0.2.0-rc.2.tgz
 ```
 
 `pnpm pack` runs the build through `prepare` and writes the release tarball to the repository root. Each build replaces `lib/` with compiled code and parser resources. The package contains the compiled Host and Client, type declarations, WASM grammars and licenses, the DSH bundle patch, plugin display metadata, and public documentation. The `files` list in `package.json` controls publication

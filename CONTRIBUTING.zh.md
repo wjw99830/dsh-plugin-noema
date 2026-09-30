@@ -71,7 +71,7 @@ pnpm benchmark:analyzer --case tsx-structured --runs 3 --warmup 5 --samples 20
 
 ```sh
 pnpm pack
-dsh plugin --profile web add ./dsh-plugin-noema-0.1.0-alpha.1.tgz
+dsh plugin --profile web add ./dsh-plugin-noema-0.2.0-rc.2.tgz
 ```
 
 `pnpm pack` 通过 `prepare` 执行构建，将发布压缩包写入仓库根目录。每次构建都会重新生成 `lib/` 中的编译代码和解析资源。包内包含编译后的 Host 与 Client、类型声明、WASM 语法与许可证、DSH bundle patch、插件展示元数据和公开文档，内容由 `package.json` 的 `files` 列表控制
