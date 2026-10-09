@@ -1,6 +1,7 @@
 # Noema
 
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/wjw99830/dsh-plugin-noema)
+[![dshfind](https://dshfind.com/api/badge/wjw99830/dsh-plugin-noema?lang=zh)](https://dshfind.com/zh/plugins/wjw99830/dsh-plugin-noema?ref=badge)
 
 [English](README.md) | 中文
 
